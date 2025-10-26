@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - House of Redland</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    
+    <link rel="stylesheet" href="tentang.css"> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Nunito+Sans:wght@400&family=Plus+Jakarta+Sans:wght@400;700&family=Poppins:wght@500;700&family=Red+Hat+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <div class="page-blur-overlay"></div>
+
+    <header>
+        <nav>
+            <ul>
+                <li class="nav-item-dropdown">
+                    <a href="#">PRODUK</a>
+                    <div class="product-dropdown">
+                        <a href="#" class="dropdown-item">
+                            <img src="image/image6.png" alt="Madu">
+                            <h3>Madu</h3>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <img src="image/image7.png" alt="Melon">
+                            <h3>Melon</h3>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <img src="image/image8.png" alt="Sayur">
+                            <h3>Sayur</h3>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="tentang.html">TENTANG</a></li>
+            </ul>
+        </nav>
+        <h1 class="main-title"><a href="index.html">HOUSE OF REDLAND</a></h1>
+        <nav>
+            <ul>
+                <li><a href="kontak.html">KONTAK</a></li>
+                <li><a href="#">LOKASI</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="about-hero-section">
+        <img src="image/pendopoawal.png" alt="House of Redland Pendopo" class="about-hero-image">
+        <div class="about-hero-overlay-text">
+            <h2>Apa itu House Of Redland?</h2>
+            <p>Berlokasi di Tanah Merah, House of Redland adalah sebuah "Hydroponic Farm & Space" yang didedikasikan untuk menghadirkan kesegaran alam dengan cara modern.</p>
+        </div>
+    </div>
+
+    <div class="main-container">
+
+        <section class="about-mission-section">
+            <div class="about-mission-image">
+                <img src="image/hijau.png" alt="Greenhouse Hidroponik House of Redland">
+            </div>
+            <div class="about-mission-text">
+                <h2>About Us</h2>
+                <p>Misi kami adalah menyediakan produk-produk segar berkualitas tinggi untuk Anda. Melalui metode pertanian hidroponik yang cermat, kami menanam berbagai sayuran premium seperti selada, kangkung, dan sawi, serta melon manis tanpa pestisida. Kami percaya bahwa makanan sehat adalah awal dari hidup yang berkualitas.</p>
+            </div>
+        </section>
+        
+        <section class="about-space-section">
+            <div class="about-space-text">
+                <h2>Our Space</h2>
+                <p>Kami tidak hanya berhenti pada pertanian. Kami juga ingin berbagi ketenangan dan keindahan tempat kami. Kami menyediakan "space" atau pendopo serbaguna yang dapat Anda sewa untuk berbagai kebutuhan. Baik itu rapat, lokakarya, acara komunitas, atau sekadar menikmati waktu santai, tempat kami dirancang untuk memberikan kenyamanan di tengah pemandangan asri.</p>
+            </div>
+            <div class="about-space-image">
+                <img src="image/pendopo.png" alt="Pendopo House of Redland"> 
+            </div>
+        </section>
+        <section class="about-details-section">
+            <div class="about-detail-block">
+                <h3>Lebih dari Pertanian: Pendopo Serbaguna</h3>
+                <p>Kami tidak hanya berhenti pada pertanian. Kami juga ingin berbagi ketenangan dan keindahan tempat kami. Kami menyediakan "space" atau pendopo serbaguna yang dapat Anda sewa untuk berbagai kebutuhan. Baik itu rapat, lokakarya, acara komunitas, atau sekadar menikmati waktu santai, tempat kami dirancang untuk memberikan kenyamanan di tengah pemandangan asri.</p>
+            </div>
+            <div class="about-detail-block">
+                <h3>Produk Segar dari Kebun Kami</h3>
+                <p>Misi kami adalah menyediakan produk-produk segar berkualitas tinggi untuk Anda. Melalui metode pertanian hidroponik yang cermat, kami menanam berbagai sayuran premium seperti selada, kangkung, dan sawi, serta melon manis tanpa pestisida. Kami percaya bahwa makanan sehat adalah awal dari hidup yang berkualitas.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Kontak Kami</h4>
+                <p><i class="fas fa-envelope"></i> houseofredland@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +62 858 4903 4541</p>
+            </div>
+            <div class="footer-column">
+                <h4>Lokasi</h4>
+                <p>Tanah Merah</p>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <p class="footer-copyright">House Of Redland, All Right Reserved</p>
+    </footer>
+
+    <script>
+        // ... (JavaScript Anda tetap sama) ...
+        const productNav = document.querySelector('.nav-item-dropdown');
+        const productDropdown = document.querySelector('.product-dropdown');
+        const blurOverlay = document.querySelector('.page-blur-overlay');
+        let menuTimer; 
+
+        if (productNav && productDropdown && blurOverlay) {
+            
+            const showMenu = () => {
+                clearTimeout(menuTimer); 
+                blurOverlay.style.display = 'block';
+                productDropdown.style.opacity = '1';
+                productDropdown.style.visibility = 'visible';
+                productDropdown.style.pointerEvents = 'auto';
+            };
+
+            const hideMenu = () => {
+                menuTimer = setTimeout(() => {
+                    blurOverlay.style.display = 'none';
+                    productDropdown.style.opacity = '0';
+                    productDropdown.style.visibility = 'hidden';
+                    productDropdown.style.pointerEvents = 'none';
+                }, 200);
+            };
+
+            productNav.addEventListener('mouseenter', showMenu);
+            productNav.addEventListener('mouseleave', hideMenu);
+            productDropdown.addEventListener('mouseenter', showMenu);
+            productDropdown.addEventListener('mouseleave', hideMenu);
+        }
+    </script>
+
+</body>
+</html>

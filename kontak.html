@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - House of Redland</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    
+    <link rel="stylesheet" href="kontak.css"> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Nunito+Sans:wght@400&family=Plus+Jakarta+Sans:wght@400;700&family=Poppins:wght@500;700&family=Red+Hat+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <div class="page-blur-overlay"></div>
+
+    <header>
+        <nav>
+            <ul>
+                <li class="nav-item-dropdown">
+                    <a href="#">PRODUK</a>
+                    <div class="product-dropdown">
+                        <a href="#" class="dropdown-item">
+                            <img src="image/image6.png" alt="Madu">
+                            <h3>Madu</h3>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <img src="image/image7.png" alt="Melon">
+                            <h3>Melon</h3>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <img src="image/image8.png" alt="Sayur">
+                            <h3>Sayur</h3>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="tentang.html">TENTANG</a></li>
+            </ul>
+        </nav>
+        <h1 class="main-title"><a href="index.html">HOUSE OF REDLAND</a></h1>
+        <nav>
+            <ul>
+                <li><a href="kontak.html">KONTAK</a></li>
+                <li><a href="#">LOKASI</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <section class="contact-header">
+            <h2>Hubungi Kami</h2>
+            <p>Hubungi kami untuk info lebih lanjut</p>
+        </section>
+
+        <section class="contact-info-grid">
+            <div class="contact-info-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p><a href="mailto:houseofredland@gmail.com">houseofredland@gmail.com</a></p>
+            </div>
+            <div class="contact-info-item">
+                <i class="fab fa-whatsapp"></i>
+                <h3>Whatsapp</h3>
+                <p><a href="https://wa.me/6285849034541" target="_blank">+62 858 4903 4541</a></p>
+            </div>
+            <div class="contact-info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Alamat</h3>
+                <p>Tanah Merah</p>
+            </div>
+        </section>
+
+        <section class="contact-map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d5800.941692565861!2d117.23421446275213!3d-0.40435127968135476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMMKwMjQnMTcuMSJTIDExN8KwMTQnMTMuNCJF!5e0!3m2!1sid!2sid!4v1761323704172!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Kontak Kami</h4>
+                <p><i class="fas fa-envelope"></i> houseofredland@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +62 858 4903 4541</p>
+            </div>
+            <div class="footer-column">
+                <h4>Lokasi</h4>
+                <p>Tanah Merah</p>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <p class="footer-copyright">House Of Redland, All Right Reserved</p>
+    </footer>
+
+    <script>
+        const productNav = document.querySelector('.nav-item-dropdown');
+        const productDropdown = document.querySelector('.product-dropdown');
+        const blurOverlay = document.querySelector('.page-blur-overlay');
+        let menuTimer; 
+
+        if (productNav && productDropdown && blurOverlay) {
+            
+            const showMenu = () => {
+                clearTimeout(menuTimer); 
+                blurOverlay.style.display = 'block';
+                productDropdown.style.opacity = '1';
+                productDropdown.style.visibility = 'visible';
+                productDropdown.style.pointerEvents = 'auto';
+            };
+
+            const hideMenu = () => {
+                menuTimer = setTimeout(() => {
+                    blurOverlay.style.display = 'none';
+                    productDropdown.style.opacity = '0';
+                    productDropdown.style.visibility = 'hidden';
+                    productDropdown.style.pointerEvents = 'none';
+                }, 200);
+            };
+
+            productNav.addEventListener('mouseenter', showMenu);
+            productNav.addEventListener('mouseleave', hideMenu);
+            productDropdown.addEventListener('mouseenter', showMenu);
+            productDropdown.addEventListener('mouseleave', hideMenu);
+        }
+    </script>
+
+</body>
+</html>
