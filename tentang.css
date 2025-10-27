@@ -1,0 +1,233 @@
+/* tentang.css */
+
+/* ------------------------------------------- */
+/* --- STYLING KHUSUS UNTUK 'TENTANG KAMI' --- */
+/* ------------------------------------------- */
+
+.about-hero-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; 
+    position: relative;
+    border-radius: 25px; 
+    overflow: hidden;
+    height: 60vh;
+    min-height: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+
+
+.about-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.about-hero-overlay-text {
+    position: absolute;
+    left: 3rem;
+    bottom: 3rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 2rem;
+    border-radius: 15px; 
+    max-width: 450px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 90px;
+}
+
+.about-hero-overlay-text h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #222;
+}
+
+.about-hero-overlay-text p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Style "About Us" (Gambar Hijau) */
+.about-mission-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 4em; 
+}
+
+.about-mission-image {
+    flex-basis: 50%;
+}
+
+.about-mission-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    display: block;
+}
+
+.about-mission-text {
+    flex-basis: 50%;
+}
+
+.about-mission-text h2 {
+    font-family: 'Georgia', 'Times New Roman', serif; 
+    font-size: 3rem;
+    font-weight: 400;
+    color: #222;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.about-mission-text p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.7;
+}
+
+
+/* ======================= */
+/* == STYLE BAGIAN OUR SPACE == */
+/* ======================= */
+.about-space-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 4em; 
+}
+
+.about-space-text {
+    flex-basis: 50%;
+    order: 1; /* Teks di kiri */
+}
+
+.about-space-image {
+    flex-basis: 50%;
+    order: 2; /* Gambar di kanan */
+}
+
+.about-space-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    display: block;
+}
+
+.about-space-text h2 {
+    font-family: 'Georgia', 'Times New Roman', serif; 
+    font-size: 3rem;
+    font-weight: 400;
+    color: #222;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.about-space-text p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.7;
+}
+/* ======================= */
+/* == AKHIR STYLE OUR SPACE == */
+/* ======================= */
+
+
+.about-details-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 4em;
+}
+
+.about-detail-block {
+    background-color: #ffffff;
+    border: 1px solid #eee;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.about-detail-block h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.about-detail-block p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* ------------------------------------------- */
+/* --- RESPONSIVE UNTUK 'TENTANG KAMI' --- */
+/* ------------------------------------------- */
+
+@media (max-width: 992px) {
+    /* Style untuk "About Us" */
+    .about-mission-section {
+        flex-direction: column;
+        gap: 2em;
+    }
+    
+    /* Style untuk "Our Space" */
+    .about-space-section {
+        flex-direction: column;
+        gap: 2em;
+    }
+    .about-space-text {
+        order: 1; 
+    }
+    .about-space-image {
+        order: 2; 
+    }
+
+    .about-details-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-hero-overlay-text {
+        left: 1em;
+        right: 1em;
+        bottom: 1em;
+        padding: 1.5em;
+    }
+    .about-hero-overlay-text h2 {
+        font-size: 1.5em;
+    }
+    
+    /* Style untuk "About Us" */
+    .about-mission-text h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Style untuk "Our Space" */
+    .about-space-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .about-detail-block {
+        padding: 1.5em;
+    }
+}

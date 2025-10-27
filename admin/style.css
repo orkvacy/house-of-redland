@@ -1,0 +1,325 @@
+/* --- Global & Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+/* =========================================
+   STYLING UNTUK LOGIN.PHP
+=========================================
+*/
+.login-body {
+    height: 100vh;
+}
+
+.split-screen-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.video-pane {
+    flex-basis: 50%;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.video-pane iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    min-width: 177.77vh;
+    min-height: 100vw;
+}
+
+.form-pane {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4F2F0; /* Latar luar */
+}
+
+.form-content {
+    width: 100%;
+    max-width: 380px;
+    padding: 50px 40px;
+    background-color: #EDEAE7; /* Latar kotak */
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    font-size: 16px;
+    background-color: transparent;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-bottom-color: #000;
+}
+
+input::placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   STYLING UNTUK DASHBOARD.PHP
+=========================================
+*/
+
+/* Ganti background-color di sini */
+/* Ganti background-color di sini */
+.dashboard-body {
+    display: flex;
+    background-color: #F4F2F1; /* Latar konten utama (kanan) - DIBALIK */
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: #EDEAE7; /* Latar sidebar (kiri) - DIBALIK */
+    padding: 25px 20px;
+    position: relative;
+    transition: width 0.3s ease;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tombol Buka/Tutup Sidebar */
+.toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 16px;
+    line-height: 28px;
+    z-index: 100;
+}
+
+/* Profile User */
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    overflow: hidden;
+    min-height: 40px; /* Jaga tinggi agar konsisten */
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.user-profile .user-info {
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.user-profile span {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #000;
+}
+
+.user-profile p {
+    font-size: 12px;
+    color: #777;
+    margin: 0;
+}
+
+/* Link Navigasi */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Membuat list menu mengisi sisa ruang */
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #333;
+}
+
+.nav-links li .material-icons {
+    margin-right: 20px;
+    font-size: 24px;
+    color: #555;
+    transition: margin 0.3s ease;
+}
+
+.nav-links li span {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.nav-links li:hover {
+    background-color: #e9e7e4;
+}
+
+.nav-links li.active {
+    background-color: #F4F2F1; /* Warna kotak saat tab dipilih - DIBALIK */
+    color: #000;
+}
+
+.nav-links li.active .material-icons {
+    color: #000;
+}
+
+/* Konten Utama */
+.main-content {
+    flex-grow: 1; /* Mengisi sisa ruang */
+    padding: 30px 40px;
+    overflow-y: auto; /* Bisa di-scroll jika konten panjang */
+    position: relative;
+}
+
+.main-content h1 {
+    margin-top: 0;
+    font-weight: 600;
+    color: #000;
+}
+
+/* Tombol Tambah (FAB) */
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 300;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 56px;
+}
+
+/* ================================== */
+/* == STYLE UNTUK JUDUL NAVBAR (LINK) == */
+/* ================================== */
+.main-title a,
+.main-title a:link,
+.main-title a:visited,
+.main-title a:hover,
+.main-title a:active,
+.main-title a:focus {
+    text-decoration: none; /* Menghilangkan garis bawah SELALU */
+    color: #000;       /* Mengambil warna dari parent (hitam) SELALU */
+    outline: none;        /* Menghilangkan outline saat di-klik/fokus */
+}
+
+.sidebar.collapsed {
+    width: 80px; /* Lebar saat tertutup */
+    padding: 25px 0;
+}
+
+.sidebar.collapsed .user-profile {
+    justify-content: center;
+}
+
+.sidebar.collapsed .user-profile img {
+    margin-right: 0;
+}
+
+.sidebar.collapsed .user-info {
+    opacity: 0; /* Sembunyikan teks info */
+    width: 0;
+}
+
+.sidebar.collapsed .nav-links li {
+    justify-content: center;
+    padding: 12px;
+}
+
+.sidebar.collapsed .nav-links li .material-icons {
+    margin-right: 0;
+}
+
+.sidebar.collapsed .nav-links li span {
+    opacity: 0; /* Sembunyikan teks link */
+    width: 0;
+}
