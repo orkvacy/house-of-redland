@@ -13,7 +13,7 @@ body {
 }
 
 /* =========================================
-   STYLING UNTUK LOGIN.PHP
+    STYLING UNTUK LOGIN.PHP
 =========================================
 */
 .login-body {
@@ -116,15 +116,13 @@ button[type="submit"]:hover {
 
 
 /* =========================================
-   STYLING UNTUK DASHBOARD.PHP
+    STYLING UNTUK DASHBOARD.PHP
 =========================================
 */
 
-/* Ganti background-color di sini */
-/* Ganti background-color di sini */
 .dashboard-body {
     display: flex;
-    background-color: #F4F2F1; /* Latar konten utama (kanan) - DIBALIK */
+    background-color: #F4F2F1; /* Latar konten utama (kanan) */
     height: 100vh;
     overflow: hidden;
 }
@@ -132,7 +130,7 @@ button[type="submit"]:hover {
 /* Sidebar */
 .sidebar {
     width: 260px;
-    background-color: #EDEAE7; /* Latar sidebar (kiri) - DIBALIK */
+    background-color: #EDEAE7; /* Latar sidebar (kiri) */
     padding: 25px 20px;
     position: relative;
     transition: width 0.3s ease;
@@ -216,12 +214,24 @@ button[type="submit"]:hover {
     color: #333;
 }
 
+/* Style untuk Ikon Google (Material Icons) */
 .nav-links li .material-icons {
     margin-right: 20px;
     font-size: 24px;
     color: #555;
     transition: margin 0.3s ease;
 }
+
+/* ===== INI CSS BARU YANG DITAMBAHKAN ===== */
+/* Style untuk Ikon Kustom (jika pakai <img>) */
+.nav-links li .nav-icon {
+    width: 24px;  /* Samakan ukuran dengan Material Icons */
+    height: 24px;
+    margin-right: 20px; /* Samakan jarak dengan Material Icons */
+    vertical-align: middle; 
+    flex-shrink: 0; /* Agar ikon tidak gepeng saat sidebar dikecilkan */
+}
+/* ========================================== */
 
 .nav-links li span {
     font-size: 15px;
@@ -235,7 +245,7 @@ button[type="submit"]:hover {
 }
 
 .nav-links li.active {
-    background-color: #F4F2F1; /* Warna kotak saat tab dipilih - DIBALIK */
+    background-color: #F4F2F1; /* Warna kotak saat tab dipilih */
     color: #000;
 }
 
@@ -292,6 +302,10 @@ button[type="submit"]:hover {
     outline: none;        /* Menghilangkan outline saat di-klik/fokus */
 }
 
+
+/* ================================== */
+/* == STYLE SAAT SIDEBAR DITUTUP (COLLAPSED) == */
+/* ================================== */
 .sidebar.collapsed {
     width: 80px; /* Lebar saat tertutup */
     padding: 25px 0;
@@ -318,6 +332,13 @@ button[type="submit"]:hover {
 .sidebar.collapsed .nav-links li .material-icons {
     margin-right: 0;
 }
+
+/* ===== INI CSS BARU YANG DITAMBAHKAN ===== */
+/* Style Ikon Kustom (img) saat sidebar ditutup */
+.sidebar.collapsed .nav-links li .nav-icon {
+    margin-right: 0;
+}
+/* ========================================== */
 
 .sidebar.collapsed .nav-links li span {
     opacity: 0; /* Sembunyikan teks link */

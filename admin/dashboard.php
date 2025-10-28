@@ -30,7 +30,8 @@ $role = $_SESSION['role'];
         <button class="toggle-btn" id="toggleBtn">&larr;</button>
 
         <div class="user-profile">
-            <img src="https://i.pravatar.cc/40?img=1" alt="Profile Picture">
+            <img src="../image/pendopoawal.png" alt="Profile Picture">
+            
             <div class="user-info">
                 <span><?php echo htmlspecialchars($username); ?></span>
                 <p><?php echo htmlspecialchars($role); ?></p>
@@ -39,14 +40,18 @@ $role = $_SESSION['role'];
 
         <ul class="nav-links">
             <li class="active">
-                <i class="material-icons">home</i>
-                <span>Home</span>
+                <img src="../image/produk.svg" alt="Ikon Produk" class="nav-icon">
+                <span>Produk</span>
             </li>
             <li>
-                <i class="material-icons">bar_chart</i>
-                <span>Statistic</span>
+                <img src="../image/kalender.svg" alt="Ikon Jadwal Penyewaan" class="nav-icon">
+                <span>Jadwal Penyewaan</span>
             </li>
-        </ul>
+            <li>
+                <img src="../image/berita.svg" alt="Ikon Berita" class="nav-icon">
+                <span>Berita</span>
+            </li>
+            </ul>
     </nav>
 
     <main class="main-content">
