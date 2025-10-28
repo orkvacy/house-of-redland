@@ -1,6 +1,20 @@
 /* kontak.css */
 
 /* Header Halaman */
+
+header {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    padding: 2em;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 101; 
+    background-color: #f4f4f4; 
+}
+
+
 .contact-header {
     text-align: center;
 }
