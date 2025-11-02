@@ -1,0 +1,141 @@
+/* produk-melon.css */
+
+/* Header Halaman */
+
+header {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    padding: 2em 2em 0px 2em;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 101; 
+    background-color: #f4f4f4; 
+}
+
+
+.product-page-header {
+    text-align: center;
+    margin-bottom: 0em;
+}
+
+.product-page-header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5em; /* Mirip .section-title */
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 0.5em;
+    position: relative;
+    display: inline-block;
+    color: #333;
+}
+
+/* Garis bawah seperti di gambar */
+.product-page-header h2::after {
+    content: '';
+    display: block;
+    width: 100%; /* Lebar garis 100% dari judul */
+    height: 1px;
+    background-color: #aaa;
+    margin: 0.25em auto 0;
+}
+
+/* Kontainer Produk */
+.product-item-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 2.5em; /* Jarak antar blok produk */
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    box-sizing: border-box; /* Mencegah padding merusak layout */
+}
+
+.product-item-image {
+    flex-basis: 40%; /* Gambar sedikit lebih kecil */
+    order: 1; /* Default: gambar di kiri */
+}
+
+.product-item-image img {
+    width: 100%;
+    border-radius: 15px;
+    display: block;
+}
+
+.product-item-text {
+    flex-basis: 60%; /* Teks sedikit lebih lebar */
+    order: 2; /* Default: teks di kanan */
+}
+
+.product-item-text h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.product-item-text p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Modifier untuk membalik urutan (Produk The Blues) */
+.product-item-container.product-item-reversed .product-item-image {
+    order: 2; /* Gambar di kanan */
+}
+
+.product-item-container.product-item-reversed .product-item-text {
+    order: 1; /* Teks di kiri */
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .product-item-container {
+        flex-direction: column;
+        gap: 2em;
+        padding: 2rem;
+    }
+
+    /* Reset flex-basis */
+    .product-item-image,
+    .product-item-text {
+        flex-basis: 100%;
+    }
+
+    /* Urutan stack untuk .product-item-reversed (The Blues) */
+    .product-item-container.product-item-reversed .product-item-text {
+        order: 1; /* Teks duluan */
+    }
+    .product-item-container.product-item-reversed .product-item-image {
+        order: 2; /* Gambar belakangan */
+    }
+    
+    /* Urutan stack normal (Ceria) */
+    .product-item-container:not(.product-item-reversed) .product-item-image {
+        order: 1; /* Gambar duluan */
+    }
+    .product-item-container:not(.product-item-reversed) .product-item-text {
+        order: 2; /* Teks belakangan */
+    }
+}
+
+@media (max-width: 600px) {
+    .product-page-header h2 {
+        font-size: 2em;
+    }
+    .product-item-text h3 {
+        font-size: 1.75rem;
+    }
+    .product-item-container {
+        padding: 1.5em;
+    }
+}

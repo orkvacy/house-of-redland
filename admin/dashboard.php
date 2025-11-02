@@ -30,7 +30,8 @@ $role = $_SESSION['role'];
         <button class="toggle-btn" id="toggleBtn">&larr;</button>
 
         <div class="user-profile">
-            <img src="https://i.pravatar.cc/40?img=1" alt="Profile Picture">
+            <img src="../image/pendopoawal.png" alt="Profile Picture">
+            
             <div class="user-info">
                 <span><?php echo htmlspecialchars($username); ?></span>
                 <p><?php echo htmlspecialchars($role); ?></p>
@@ -39,22 +40,53 @@ $role = $_SESSION['role'];
 
         <ul class="nav-links">
             <li class="active">
-                <i class="material-icons">home</i>
-                <span>Home</span>
+                <img src="../image/produk.svg" alt="Ikon Produk" class="nav-icon">
+                <span>Produk</span>
             </li>
             <li>
-                <i class="material-icons">bar_chart</i>
-                <span>Statistic</span>
+                <img src="../image/kalender.svg" alt="Ikon Jadwal Penyewaan" class="nav-icon">
+                <span>Jadwal Penyewaan</span>
             </li>
-        </ul>
+            <li>
+                <img src="../image/berita.svg" alt="Ikon Berita" class="nav-icon">
+                <span>Berita</span>
+            </li>
+            </ul>
     </nav>
 
     <main class="main-content">
         <h1>Produk Anda</h1>
 
-        <button class="fab">+</button>
+        <button class="fab" id="openModalBtn">+</button>
     </main>
 
+    <div id="addProductModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn">&times;</button>
+            <h2>Tambah Produk Baru</h2>
+
+            <form action="#" method="POST" enctype="multipart/form-data">
+                
+                <div class="form-modal-group">
+                    <label for="judul_buah">Judul Buah</label>
+                    <input type="text" id="judul_buah" name="judul_buah" placeholder="Contoh: Melon Hidroponik Ceria" required>
+                </div>
+
+                <div class="form-modal-group">
+                    <label for="penjelasan_buah">Penjelasan Buah</label>
+                    <textarea id="penjelasan_buah" name="penjelasan_buah" rows="4" placeholder="Jelaskan tentang produk buah ini..." required></textarea>
+                </div>
+
+                <div class="form-modal-group">
+                    <label for="gambar_buah">Gambar Buah</label>
+                    <input type="file" id="gambar_buah" name="gambar_buah" class="custom-file-input" required>
+                    <label for="gambar_buah" class="custom-file-label">Pilih file...</label>
+                </div>
+
+                <button type="submit" class="submit-modal-btn">Simpan Produk</button>
+            </form>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
