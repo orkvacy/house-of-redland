@@ -83,7 +83,7 @@ if ($next_month == 13) {
         <nav>
             <ul>
                 <li><a href="kontak.html">KONTAK</a></li>
-                <li><a href="jadwal.php">Jadwal</a></li>
+                <li><a href="jadwal.php">JADWAL</a></li>
             </ul>
         </nav>
     </header>
