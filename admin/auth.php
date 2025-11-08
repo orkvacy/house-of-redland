@@ -2,10 +2,10 @@
 session_start();
 
 // Konfigurasi Database
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', ''); // Sesuaikan dengan password MySQL Anda
-define('DB_NAME', 'house_of_redland');
+define('DB_HOST', 'sql201.infinityfree.com'); // ganti XXX sesuai host yang tertera
+define('DB_USER', 'if0_40355573'); // username database kamu
+define('DB_PASS', 'IniPassword1234'); // password yang kamu buat di InfinityFree
+define('DB_NAME', 'if0_40355573_houseofredland'); // nama database kamu
 
 // Buat koneksi database
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
