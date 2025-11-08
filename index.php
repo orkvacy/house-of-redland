@@ -1,0 +1,215 @@
+<?php
+require_once 'config.php';
+
+// Ambil semua kategori untuk dropdown dan product cards
+$query_kategori = "SELECT * FROM kategori_produk ORDER BY id ASC";
+$result_kategori = mysqli_query($conn, $query_kategori);
+$kategori_list = [];
+if ($result_kategori) {
+    while ($row = mysqli_fetch_assoc($result_kategori)) {
+        $kategori_list[] = $row;
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Redland</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Poppins:wght@500;700&family=Red+Hat+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <div class="page-blur-overlay"></div>
+
+    <header>
+        <nav>
+            <ul>
+                <li class="nav-item-dropdown">
+                    <a href="#">PRODUK</a>
+                    <div class="product-dropdown">
+                        <?php foreach ($kategori_list as $kategori): ?>
+                        <a href="produk.php?kategori=<?php echo $kategori['id']; ?>" class="dropdown-item">
+                            <img src="<?php echo htmlspecialchars($kategori['gambar_kategori']); ?>" alt="<?php echo htmlspecialchars($kategori['nama_kategori']); ?>">
+                            <h3><?php echo htmlspecialchars($kategori['nama_kategori']); ?></h3>
+                        </a>
+                        <?php endforeach; ?>
+                    </div>
+                </li>
+                <li><a href="tentang.html">TENTANG</a></li>
+            </ul>
+        </nav>
+        <h1 class="main-title"><a href="index.php">HOUSE OF REDLAND</a></h1>
+        <nav>
+            <ul>
+                <li><a href="kontak.html">KONTAK</a></li>
+                <li><a href="jadwal.php">JADWAL</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <main>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/LGF33NN4B8U?autoplay=1&mute=1&loop=1&playlist=LGF33NN4B8U&controls=0&showinfo=0&autohide=1&modestbranding=1" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+                
+                <div class="video-overlay-text">
+                    <h2>Apa itu House Of Redland?</h2>
+                    <p>Berlokasi di Tanah Merah, House of Redland adalah sebuah "Hydroponic Farm & Space" yang didedikasikan untuk menghadirkan kesegaran alam dengan cara modern.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="info-box-container">
+        <div class="info-box">
+            <div class="info-item">
+                <img src="image/clock.svg" alt="Clock Icon" class="icon-image">
+                <span>WE'RE OPEN</span>
+                <span class="time">08:00 - 17:00</span>
+            </div>
+            <div class="info-item">
+                <img src="image/home.svg" alt="House Icon" class="icon-image">
+                <span>BOOK SOME PLACE</span>
+            </div>
+            <div class="info-item">
+                <img src="image/shop.svg" alt="Shopping Bag Icon" class="icon-image">
+                <span>GET YOUR FRESH HYDROPONICS</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <section class="welcome-section">
+            <div class="image-gallery">
+                <img src="image/image1.png" alt="Melon hidroponik">
+                <img src="image/image2.png" alt="Rumah House of Redland">
+                <img src="image/image3.png" alt="Produk madu">
+            </div>
+            <div class="welcome-text">
+                <h2>Welcome to <br> House Of Redland</h2>
+                <p>
+                    Temukan kesegaran buah hidroponik premium kami! Nikmati madu alami murni dari kebun kami. Ada juga ruang serbaguna, ideal disewa untuk acara komunitas, lokakarya, atau kumpul santai dengan pemandangan asri.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <section class="action-banners">
+        <div class="banner-item">
+            <img src="image/image4.png" alt="House of Redland Space">
+            <div class="banner-overlay">RENT OUR SPACE</div>
+        </div>
+        <div class="banner-item">
+            <img src="image/image5.png" alt="Hidroponik Melon">
+            <div class="banner-overlay">SHOP OUR ITEM</div>
+        </div>
+    </section>
+
+    <section class="product-section">
+        <h2 class="section-title">OUR PRODUCT</h2>
+        <div class="product-cards">
+            <?php if (count($kategori_list) > 0): ?>
+                <?php foreach ($kategori_list as $kategori): ?>
+                    <?php
+                    // Tentukan class card berdasarkan nama kategori
+                    $card_class = 'product-card';
+                    if ($kategori['nama_kategori'] == 'Madu') {
+                        $card_class .= ' card-honey';
+                    } elseif ($kategori['nama_kategori'] == 'Melon') {
+                        $card_class .= ' card-melon';
+                    } elseif ($kategori['nama_kategori'] == 'Sayur') {
+                        $card_class .= ' card-lettuce';
+                    }
+                    ?>
+                    <div class="<?php echo $card_class; ?>">
+                        <img src="<?php echo htmlspecialchars($kategori['gambar_kategori']); ?>" alt="<?php echo htmlspecialchars($kategori['nama_kategori']); ?>">
+                        <h3><?php echo htmlspecialchars($kategori['nama_kategori']); ?></h3>
+                        <p><?php echo htmlspecialchars($kategori['deskripsi_singkat']); ?></p>
+                        <a href="produk.php?kategori=<?php echo $kategori['id']; ?>" class="btn-category">Selengkapnya</a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <!-- Fallback jika belum ada data di database -->
+                <div class="product-card card-honey">
+                    <img src="image/image6.png" alt="Madu">
+                    <h3>Madu</h3>
+                    <p>Madu Sehat dari Lebah Tidak Menyengat</p>
+                    <a href="produk.php?kategori=1" class="btn-category">Selengkapnya</a>
+                </div>
+                <div class="product-card card-melon">
+                    <img src="image/image7.png" alt="Melon">
+                    <h3>Melon</h3>
+                    <p>Melon Kuning Segar Rasanya</p>
+                    <a href="produk.php?kategori=2" class="btn-category">Selengkapnya</a>
+                </div>
+                <div class="product-card card-lettuce">
+                    <img src="image/image8.png" alt="Sayur">
+                    <h3>Sayur</h3>
+                    <p>Sayur Sehat Tanpa Pengawet</p>
+                    <a href="produk.php?kategori=3" class="btn-category">Selengkapnya</a>
+                </div>
+            <?php endif; ?>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Kontak Kami</h4>
+                <p><i class="fas fa-envelope"></i> houseofredland@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +62 858 4903 4541</p>
+            </div>
+            <div class="footer-column">
+                <h4>Lokasi</h4>
+                <p>Tanah Merah</p>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <p class="footer-copyright">House Of Redland, All Right Reserved</p>
+    </footer>
+
+    <script>
+        const productNav = document.querySelector('.nav-item-dropdown');
+        const productDropdown = document.querySelector('.product-dropdown');
+        const blurOverlay = document.querySelector('.page-blur-overlay');
+        let menuTimer; 
+
+        if (productNav && productDropdown && blurOverlay) {
+            
+            const showMenu = () => {
+                clearTimeout(menuTimer); 
+                blurOverlay.style.display = 'block';
+                productDropdown.style.opacity = '1';
+                productDropdown.style.visibility = 'visible';
+                productDropdown.style.pointerEvents = 'auto';
+            };
+
+            const hideMenu = () => {
+                menuTimer = setTimeout(() => {
+                    blurOverlay.style.display = 'none';
+                    productDropdown.style.opacity = '0';
+                    productDropdown.style.visibility = 'hidden';
+                    productDropdown.style.pointerEvents = 'none';
+                }, 200);
+            };
+
+            productNav.addEventListener('mouseenter', showMenu);
+            productNav.addEventListener('mouseleave', hideMenu);
+            productDropdown.addEventListener('mouseenter', showMenu);
+            productDropdown.addEventListener('mouseleave', hideMenu);
+        }
+    </script>
+
+</body>
+</html>
