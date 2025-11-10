@@ -1,5 +1,6 @@
 <?php
 // --- LOGIKA PHP UNTUK KALENDER ---
+require_once 'config.php'; // <-- 1. PANGGIL KONEKSI DATABASE
 
 // 1. Tentukan Bulan dan Tahun
 $month = $_GET['month'] ?? date('m');
@@ -8,13 +9,16 @@ $year = $_GET['year'] ?? date('Y');
 // 2. Dapatkan Tanggal Hari Ini (Untuk Highlight)
 $today_date = date('Y-m-d'); // Format: 2025-11-02
 
-// 3. Data Booking (SIMULASI DATABASE)
-$booked_dates = [
-    '2025-11-10',
-    '2025-11-15',
-    '2025-11-16',
-    '2025-12-05'
-];
+// 3. Data Booking (DIAMBIL DARI DATABASE)
+$booked_dates = []; // <-- Buat array kosong
+// Ambil HANYA yang statusnya 'accepted'
+$query = "SELECT tanggal_booked FROM jadwal_penyewaan WHERE status = 'accepted'";
+$result = mysqli_query($conn, $query);
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $booked_dates[] = $row['tanggal_booked']; // <-- Isi array dengan data dari DB
+    }
+}
 
 // 4. Perhitungan Kalender
 $first_day_of_month_timestamp = mktime(0, 0, 0, $month, 1, $year);
@@ -50,6 +54,42 @@ if ($next_month == 13) {
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="jadwal.css">
+    
+    <style>
+        .booking-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #000;
+            position: relative;
+        }
+        .booking-link:hover {
+            background-color: #e6f7ff;
+            font-weight: bold;
+        }
+        /* Tambahkan "Book Now" saat hover */
+        .booking-link:hover::after {
+            content: 'Book Now';
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: 700;
+            color: #0056b3;
+            background-color: #cce7ff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        td.past-date {
+            background-color: #f9f9f9;
+        }
+        td.past-date .day-number {
+            color: #ccc;
+        }
+    </style>
 
 </head>
 <body>
@@ -59,27 +99,11 @@ if ($next_month == 13) {
     <header>
         <nav>
             <ul>
-                <li class="nav-item-dropdown">
-                    <a href="#">PRODUK</a>
-                    <div class="product-dropdown">
-                        <a href="#" class="dropdown-item">
-                            <img src="image/image6.png" alt="Madu">
-                            <h3>Madu</h3>
-                        </a>
-                        <a href="melon.html" class="dropdown-item">
-                            <img src="image/image7.png" alt="Melon">
-                            <h3>Melon</h3>
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <img src="image/image8.png" alt="Sayur">
-                            <h3>Sayur</h3>
-                        </a>
-                    </div>
-                </li>
+                <li><a href="produk.php">PRODUK</a></li>
                 <li><a href="tentang.html">TENTANG</a></li>
             </ul>
         </nav>
-        <h1 class="main-title"><a href="index.html">HOUSE OF REDLAND</a></h1>
+        <h1 class="main-title"><a href="index.php">HOUSE OF REDLAND</a></h1>
         <nav>
             <ul>
                 <li><a href="kontak.html">KONTAK</a></li>
@@ -132,21 +156,39 @@ if ($next_month == 13) {
                                 echo "</tr><tr>";
                             }
 
-                            $current_date = $year . '-' . $month . '-' . str_pad($day_count, 2, '0', STR_PAD_LEFT);
+                            // Format tanggal saat ini: YYYY-MM-DD
+                            $current_date = $year . '-' . str_pad($month, 2, '0', STR_PAD_LEFT) . '-' . str_pad($day_count, 2, '0', STR_PAD_LEFT);
+                            
+                            $is_booked = in_array($current_date, $booked_dates);
+                            $is_past = $current_date < $today_date;
                             
                             $css_classes = [];
 
                             if ($current_date == $today_date) {
                                 $css_classes[] = 'today';
                             }
-                            if (in_array($current_date, $booked_dates)) {
+                            if ($is_booked) {
                                 $css_classes[] = 'booked';
+                            }
+                            if ($is_past && !$is_booked) {
+                                $css_classes[] = 'past-date';
                             }
                             
                             $class_string = empty($css_classes) ? '' : 'class="' . implode(' ', $css_classes) . '"';
 
                             echo "<td $class_string>";
-                            echo "<span class='day-number'>$day_count</span>";
+
+                            // LOGIKA BARU:
+                            if ($is_booked || $is_past) {
+                                // Jika sudah dibooking (accepted) atau sudah lewat, tidak bisa diklik
+                                echo "<span class='day-number'>$day_count</span>";
+                            } else {
+                                // Jika kosong, buat link ke halaman booking
+                                echo "<a href='booking.php?tanggal=$current_date' class='booking-link'>";
+                                echo "<span class='day-number'>$day_count</span>";
+                                echo "</a>";
+                            }
+                            
                             echo "</td>";
 
                             $day_count++;
