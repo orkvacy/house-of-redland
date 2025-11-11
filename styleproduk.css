@@ -249,7 +249,7 @@ header nav li:not(.nav-item-dropdown) a:hover {
 /* 4. Kartu Produk Individual */
 .product-card {
     width: 320px;
-    background-color: #fdfffd;
+    background-color: #f4f4f4;
     border-radius: 20px; 
     overflow: hidden; 
     position: relative; /* Penting untuk link & overlay */
