@@ -12,7 +12,8 @@ header {
     box-sizing: border-box;
     position: relative;
     z-index: 101; 
-    background-color: #f4f4f4; 
+    background-color: #ffffff; 
+    margin-bottom: 10px;
 }
 
 

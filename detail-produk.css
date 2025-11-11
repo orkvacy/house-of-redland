@@ -1,0 +1,138 @@
+/* ================================================= */
+/* == CSS KHUSUS UNTUK HALAMAN DETAIL PRODUK == */
+/* ==       (DESAIN MINIMALIS MODERN)       == */
+/* ================================================= */
+
+/* Mengatur font dasar untuk konsistensi */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #F9F9F9; /* Memberi sedikit warna pada body */
+    color: #333;
+}
+
+.main-container {
+    /* Pastikan main-container tidak punya background putih 
+       jika body sudah abu-abu, atau sebaliknya.
+       Kita buat main-container-nya bersih saja. */
+    width: 100%;
+}
+
+.detail-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: 3em 3em 4em 3em; /* Sedikit margin lebih untuk 'nafas' */
+    padding: 2.5em; /* Padding lebih besar agar lebih lega */
+    gap: 40px;
+    
+    /* INI PERUBAHAN UTAMA:
+       Ganti border hitam yang kaku dengan shadow yang modern */
+    background-color: #ffffff;
+    border: none; /* Hapus border lama */
+    border-radius: 20px; /* Sudut lebih bulat dan modern */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.detail-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Hapus border di gambar, ganti dengan background ringan */
+    border: none; 
+    border-radius: 15px; /* Sesuaikan dengan container */
+    background-color: #FDFDFD;
+    padding: 1em; /* Beri jarak antara gambar dan tepi */
+    overflow: hidden; /* Pastikan gambar tidak keluar radius */
+}
+
+.detail-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Susun elemen secara vertikal */
+    justify-content: center; /* Pusatkan konten secara vertikal */
+    padding-left: 0; /* Hapus padding kiri, biarkan 'gap' yang mengatur */
+}
+
+.detail-info .new-badge {
+    /* Ubah dari teks merah menjadi 'tag' hijau yang segar */
+    background-color: #E8F5E9; /* Hijau muda (tema pertanian) */
+    color: #388E3C; /* Hijau tua */
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block; /* Agar padding berfungsi */
+    align-self: flex-start; /* Pastikan badge ada di atas */
+}
+
+.detail-info h1 {
+    font-family: 'Poppins', sans-serif; /* Font lebih tegas untuk judul */
+    font-size: 40px;
+    font-weight: 700;
+    margin: 15px 0;
+    color: #222; /* Sedikit lebih gelap dari teks biasa */
+}
+
+.detail-info p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.7; /* Jarak antar baris lebih nyaman */
+    margin-bottom: 25px;
+}
+
+.detail-info .price {
+    /* Jadikan harga sebagai fokus dengan warna tema */
+    font-size: 28px;
+    color: #4CAF50; /* Warna hijau segar (tema pertanian) */
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.btn-pesan {
+    /* Ganti tombol hitam menjadi tombol hijau sesuai tema */
+    background-color: #588157; /* Hijau 'alami' yang elegan */
+    color: white;
+    text-decoration: none;
+    padding: 14px 35px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    align-self: flex-start; /* Tombol rata kiri */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(88, 129, 87, 0.3); /* Bayangan hijau */
+}
+
+.btn-pesan:hover {
+    background-color: #3A5A40; /* Hijau lebih gelap saat hover */
+    transform: translateY(-2px); /* Efek 'mengangkat' saat hover */
+    box-shadow: 0 6px 15px rgba(58, 90, 64, 0.4);
+}
+
+/* Responsive untuk Halaman Detail */
+@media (max-width: 768px) {
+    .detail-container {
+        flex-direction: column;
+        margin: 1.5em auto;
+        padding: 1.5em;
+    }
+    .detail-info {
+        padding-left: 0;
+        text-align: center; /* Pusatkan teks di mobile */
+    }
+    .detail-info .new-badge,
+    .btn-pesan {
+        align-self: center; /* Pusatkan badge dan tombol di mobile */
+    }
+}

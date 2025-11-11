@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Redland - Produk Kami</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Poppins:wght@500;700&family=Red+Hat+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="styleproduk.css">
+
+</head>
+<body>
+
+    <div class="page-blur-overlay"></div>
+
+    <header>
+        <nav>
+            <ul>
+                <li class="nav-item-dropdown">
+                    <a href="#">PRODUK</a>
+                    <div class="product-dropdown">
+                        <a href="produk.php?kategori=1" class="dropdown-item">
+                            <img src="image/image6.png" alt="Madu">
+                            <h3>Madu</h3>
+                        </a>
+                        <a href="produk.php?kategori=2" class="dropdown-item">
+                            <img src="image/image7.png" alt="Melon">
+                            <h3>Melon</h3>
+                        </a>
+                        <a href="produk.php?kategori=3" class="dropdown-item">
+                            <img src="image/image8.png" alt="Sayur">
+                            <h3>Sayur</h3>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="tentang.html">TENTANG</a></li>
+            </ul>
+        </nav>
+        <h1 class="main-title"><a href="index.php">HOUSE OF REDLAND</a></h1>
+        <nav>
+            <ul>
+                <li><a href="kontak.html">KONTAK</a></li>
+                <li><a href="jadwal.php">JADWAL</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container"> 
+        <main>
+            <section class="product-section">
+                <h1 class="section-title">Produk Kami</h1>
+
+                <div class="product-grid">
+
+                    <div class="product-card">
+                        <a href="detail-produk.html" class="product-card-link" aria-label="Lihat detail Melon Ceria"></a>
+                        
+                        <div class="sold-out-overlay">
+                            <span>HABIS</span>
+                        </div>
+                        <figure class="product-image-container">
+                            <img src="image/melonijo.png" alt="Melon Ceria">
+                        </figure>
+                        <div class="product-info">
+                            <span class="new-badge">NEW</span>
+                            <h2>Melon Ceria</h2>
+                            <p>Desain inovatif untuk performa dan kekuatan baterai maksimal</p>
+                            <div class="product-footer">
+                                <span class="price">Mulai dari 23.749.000.</span>
+                                <a href="detail-produk.html" class="btn-buy">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card sold-out"> 
+                        <a href="#" class="product-card-link" aria-label="Melon The Blues (Habis)"></a>
+                        
+                        <div class="sold-out-overlay">
+                            <span>HABIS</span>
+                        </div>
+                        <figure class="product-image-container"> 
+                            <img src="image/melonkuning.png" alt="Melon The Blues">
+                        </figure>
+                        <div class="product-info">
+                            <span class="new-badge">NEW</span>
+                            <h2>Melon The Blues</h2>
+                            <p>Desain inovatif untuk performa dan kekuatan baterai maksimal</p>
+                            <div class="product-footer">
+                                <span class="price">Mulai dari 23.749.000.</span>
+                                <a href="#" class="btn-buy disabled">Beli</a> 
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Kontak Kami</h4>
+                <p><i class="fas fa-envelope"></i> houseofredland@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +62 858 4903 4541</p>
+            </div>
+            <div class="footer-column">
+                <h4>Lokasi</h4>
+                <p>Tanah Merah</p>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <p class="footer-copyright">House Of Redland, All Right Reserved</p>
+    </footer>
+
+    <script>
+        const productNav = document.querySelector('.nav-item-dropdown');
+        const productDropdown = document.querySelector('.product-dropdown');
+        const blurOverlay = document.querySelector('.page-blur-overlay');
+        let menuTimer; 
+
+        if (productNav && productDropdown && blurOverlay) {
+            
+            const showMenu = () => {
+                clearTimeout(menuTimer); 
+                blurOverlay.style.display = 'block';
+                productDropdown.style.opacity = '1';
+                productDropdown.style.visibility = 'visible';
+                productDropdown.style.pointerEvents = 'auto';
+            };
+
+            const hideMenu = () => {
+                menuTimer = setTimeout(() => {
+                    blurOverlay.style.display = 'none';
+                    productDropdown.style.opacity = '0';
+                    productDropdown.style.visibility = 'hidden';
+                    productDropdown.style.pointerEvents = 'none';
+                }, 200);
+            };
+
+            productNav.addEventListener('mouseenter', showMenu);
+            productNav.addEventListener('mouseleave', hideMenu);
+            productDropdown.addEventListener('mouseenter', showMenu);
+            productDropdown.addEventListener('mouseleave', hideMenu);
+        }
+    </script>
+
+</body>
+</html>
